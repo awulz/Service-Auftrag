@@ -21,3 +21,6 @@ Dann dev server starten mit `npm run dev`
 MySQL Datenbank kann über Linux/Unix mit homebrew installiert und gestartet werden, bei windows ist es noch einfacher.
 
 Linux/Unix: `brew services start mysql`
+
+## Projectspeicherung zur ausführung
+Da wir php benutzen müsst ihr das projekt in htdocs speichern!
