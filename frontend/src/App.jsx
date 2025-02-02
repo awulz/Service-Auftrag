@@ -5,10 +5,10 @@ import AuftragsListe from "./components/AuftragsListe";
 import "./App.css";
 
 function App() {
-    const [token, setToken] = useState(localStorage.getItem("token"));
+    const [token, setToken] = useState(null); // Keine JWT mehr, nur User-Daten
 
-    const handleLogin = (newToken) => {
-        setToken(newToken);
+    const handleLogin = (user) => {
+        setToken(user);
     };
 
     return (
