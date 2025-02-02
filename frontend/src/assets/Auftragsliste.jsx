@@ -1,26 +1,29 @@
 import { useEffect, useState } from "react";
-import "../App.css";
+import { getAuftraege } from "../services/api";
 
 function AuftragsListe() {
-  const [aufträge, setAufträge] = useState([]);
+    const [auftraege, setAuftraege] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:8000/index.php")
-      .then(response => response.json())
-      .then(data => setAufträge(data))
-      .catch(error => console.error("Fehler beim Laden der Aufträge:", error));
-  }, []);
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getAuftraege();
+            setAuftraege(data);
+        }
+        fetchData();
+    }, []);
 
-  return (
-    <div className="auftrag-container">
-      <h1>Auftragsliste</h1>
-      <ul>
-        {aufträge.map((auftrag) => (
-          <li key={auftrag.id}>
-            {auftrag.kategorie} - {auftrag.status} (Deadline: {auftrag.deadline})
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    return (
+        <div>
+            <h2>Auftragsliste</h2>
+            <ul>
+                {auftraege.map((auftrag) => (
+                    <li key={auftrag.id}>
+                        {auftrag.kategorie} - {auftrag.status} (Deadline: {auftrag.deadline})
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }
+
+export default AuftragsListe;

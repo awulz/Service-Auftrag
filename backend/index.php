@@ -1,5 +1,6 @@
 <?php
 require 'config/db.php'; // Verbindung zur Datenbank
+require 'routes/auftraege.php';
 
 header('Content-Type: application/json');
 
