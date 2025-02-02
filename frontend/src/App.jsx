@@ -1,10 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import AuftragsListe from "./components/AuftragsListe";
+import AuftragForm from "./components/AuftragForm";
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [aufträge, setAufträge] = useState([]);
+  const [count, setCount] = useState(0);
+
+  const handleNeuerAuftrag = (auftrag) => {
+    setAufträge([...aufträge, auftrag]);
+  };
 
   return (
     <>
@@ -28,8 +35,12 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <div className="container">
+        <AuftragsListe />
+        <AuftragForm onAuftragErstellen={handleNeuerAuftrag} />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
