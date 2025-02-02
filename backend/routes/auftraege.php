@@ -1,5 +1,6 @@
 <?php
-require '../config/db.php';
+require __DIR__ . "/../config/db.php";
+
 
 header('Content-Type: application/json');
 $request = trim($_SERVER['REQUEST_URI'], "/");

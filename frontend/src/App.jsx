@@ -1,45 +1,22 @@
+import AuftragForm from "./components/AuftragForm";
 import AuftragsListe from "./components/AuftragsListe";
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-  const [aufträge, setAufträge] = useState([]);
-  const [count, setCount] = useState(0);
+    const [refresh, setRefresh] = useState(false); // State zum Aktualisieren der Liste
 
-  const handleNeuerAuftrag = (auftrag) => {
-    setAufträge([...aufträge, auftrag]);
-  };
+    const handleNeuerAuftrag = () => {
+        setRefresh((prev) => !prev); // Triggert `useEffect` in `AuftragsListe`
+    };
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <div className="container">
-        <AuftragsListe />
-        <AuftragForm onAuftragErstellen={handleNeuerAuftrag} />
-      </div>
-    </>
-  );
+    return (
+        <div>
+            <h1>🛠️ Auftrag-Service</h1>
+            <AuftragsListe refresh={refresh} />
+            <AuftragForm onAuftragErstellen={handleNeuerAuftrag} />
+        </div>
+    );
 }
 
 export default App;
