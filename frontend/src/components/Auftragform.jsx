@@ -6,6 +6,13 @@ function AuftragForm({ onAuftragErstellen }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Prüfe, ob das Datum korrekt eingegeben wurde
+        if (!auftrag.deadline || auftrag.deadline < "1900-01-01") {
+            alert("Bitte ein gültiges Datum eingeben!");
+            return;
+        }
+
         const response = await createAuftrag(auftrag);
         alert(response.message);
         onAuftragErstellen(auftrag);  
