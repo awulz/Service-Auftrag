@@ -4,6 +4,8 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
+
+
 // OPTIONS-Request für CORS erlauben
 if ($_SERVER['REQUEST_METHOD'] == "OPTIONS") {
     http_response_code(200);
@@ -11,19 +13,25 @@ if ($_SERVER['REQUEST_METHOD'] == "OPTIONS") {
 }
 
 require_once __DIR__ . "/config/db.php";
+require_once __DIR__ . "/routes/auth.php";
 require_once __DIR__ . "/routes/auftraege.php";
 
 header('Content-Type: application/json');
 
-// Bereinige die URL: Entferne den Projektpfad und hole `request`
-$request = $_GET['request'] ?? trim(str_replace("/Service-Auftrag-1/backend/index.php", "", $_SERVER['REQUEST_URI']), "/");
-$method  = $_SERVER['REQUEST_METHOD'];
+echo json_encode(["request_uri" => $_SERVER['REQUEST_URI'], "request" => $request]);
+exit;
 
-// 🔹 Debugging: Zeigt den bereinigten `request`-Wert
+
+// Bereinige die URL: Entferne den Projektpfad und hole `request`
+// Bereinige die URL: Entferne `index.php?request=` oder `/backend/index.php?`
+$request = isset($_GET['request']) ? $_GET['request'] : trim(str_replace(["/Service-Auftrag-1/backend/index.php?", "/backend/index.php?"], "", $_SERVER['REQUEST_URI']), "/");
+
+// Debugging: Zeigt die bereinigte `request`
 if (isset($_GET['debug'])) {
-    echo json_encode(["request" => $request]);
+    echo json_encode(["fixed_request" => $request]);
     exit;
 }
+
 
 // 🔹 API: Alle Aufträge abrufen (GET /api/auftraege)
 if ($request === 'api/auftraege' && $method === 'GET') {
