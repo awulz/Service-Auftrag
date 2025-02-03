@@ -1,23 +1,16 @@
 <?php
-require __DIR__ . "/../config/db.php";
+require_once __DIR__ . "/../config/db.php";
 
 // CORS-Header setzen
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-// OPTIONS-Request für CORS beantworten
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
-
-// 🔹 API: Benutzer-Login (POST /api/login)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['request'] === 'api/login') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
 
     if (!$data || !isset($data['arbeiter_id'], $data['passwort'])) {
-        echo json_encode(["error" => "Ungültige Eingabe"]);
+        echo json_encode(["error" => "Fehlende Eingabe"]);
         exit;
     }
 
@@ -31,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['request'] === 'api/login') {
         exit;
     }
 
-    if (!password_verify($data['passwort'], $user['passwort'])) {
+    // Passwort checken mit password_verify()
+    if (!password_verify($data['passwort'],  hash: $user['passwort'])) {
         echo json_encode(["error" => "Falsches Passwort"]);
         exit;
     }

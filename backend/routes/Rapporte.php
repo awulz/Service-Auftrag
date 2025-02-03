@@ -1,5 +1,6 @@
 <?php
-require __DIR__ . "/../config/db.php";
+require_once __DIR__ . "/../config/db.php";
+
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, DELETE, PATCH, OPTIONS");

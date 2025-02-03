@@ -1,18 +1,16 @@
 <?php
-require __DIR__ . "/../config/db.php";
-
+require_once __DIR__ . "/../config/db.php";
 
 header('Content-Type: application/json');
-$request = trim($_SERVER['REQUEST_URI'], "/");
-$method  = $_SERVER['REQUEST_METHOD'];
+$method = $_SERVER['REQUEST_METHOD'];
 
-if ($request === 'api/auftraege' && $method === 'GET') {
+if ($method === 'GET' && $request === 'api/auftraege') {
     $stmt = $pdo->query("SELECT * FROM auftraege");
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
     exit;
 }
 
-if ($request === 'api/auftrag' && $method === 'POST') {
+if ($method === 'POST' && $request === 'api/auftrag') {
     $data = json_decode(file_get_contents("php://input"), true);
     if (!$data || !isset($data['kategorie'], $data['status'], $data['deadline'])) {
         echo json_encode(["error" => "Ungültige Eingabe"]);
