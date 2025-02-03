@@ -50,7 +50,7 @@ function Auftragsmanagement() {
                                     <Link to={`/auftrag-bearbeiten/${auftrag.id}`}>
                                         <button className="btn bearbeiten">✏ Bearbeiten</button>
                                     </Link>
-                                    <Link to={`/rapporte/${auftrag.id}`}>
+                                    <Link to= "./rapporte">
                                         <button className="btn rapport">📄 Rapport</button>
                                     </Link>
                                 </td>

@@ -32,10 +32,9 @@
 
 .btn {
     padding: 10px 15px;
-    margin: 10px;
+    font-size: 16px;
     border: none;
     cursor: pointer;
-    font-size: 16px;
     border-radius: 5px;
     transition: 0.3s;
 }
