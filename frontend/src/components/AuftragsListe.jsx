@@ -42,12 +42,16 @@ function AuftragsListe() {
                 </tbody>
             </table>
 
+            {/* Button-Container für die Navigation */}
             <div className="button-container">
                 <Link to="/rapporte">
                     <button className="btn rapport">📄 Zu Rapporte</button>
                 </Link>
                 <Link to="/auftrag-erfassen">
                     <button className="btn erfassen">📌 Auftrag erfassen</button>
+                </Link>
+                <Link to="/auftragsmanagement">
+                    <button className="btn management">📊 Zum Auftragsmanagement</button>
                 </Link>
             </div>
         </div>
