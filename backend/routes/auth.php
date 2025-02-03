@@ -1,5 +1,7 @@
 <?php
-require __DIR__ . "/../config/db.php";
+require_once __DIR__ . "/../config/db.php";
+global $request; // Damit die Variable aus index.php erkannt wird
+
 
 // CORS-Header setzen
 header("Access-Control-Allow-Origin: *");
@@ -13,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // 🔹 API: Benutzer-Login (POST /api/login)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['request'] === 'api/login') {
+if ($request === 'api/login' && $method === 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
 
     if (!$data || !isset($data['arbeiter_id'], $data['passwort'])) {
