@@ -1,0 +1,99 @@
+/* Hauptcontainer */
+.admin-container {
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9; /* Helles Grau für bessere Lesbarkeit */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabelle-Styling */
+.admin-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabellen-Kopf */
+.admin-tabelle th {
+    background-color: #333; /* Dunkelgrau */
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+}
+
+/* Tabellen-Zellen */
+.admin-tabelle td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* Abwechselnde Zeilenfarben */
+.admin-tabelle tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.admin-tabelle tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Hover-Effekt für Zeilen */
+.admin-tabelle tr:hover {
+    background-color: #d5d5d5;
+    transition: 0.3s;
+}
+
+/* Sidebar-Styling */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    gap: 10px;
+}
+
+/* Sidebar-Buttons */
+.sidebar button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.3s;
+    font-weight: bold;
+    background-color: #777;
+    color: white;
+}
+
+/* Aktiver Button */
+.sidebar button.active {
+    background-color: #444;
+}
+
+/* Hover-Effekt */
+.sidebar button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+/* Button-Container */
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Allgemeine Button-Styling */
+.btn {
+    padding: 10px 14px;
+    font-size: 14px;
+    border: none
+}

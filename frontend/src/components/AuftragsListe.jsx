@@ -53,6 +53,12 @@ function AuftragsListe() {
                 <Link to="/auftragsmanagement">
                     <button className="btn management">📊 Zum Auftragsmanagement</button>
                 </Link>
+                    
+                <Link to="/adminbereich">
+                    <button className="btn management">Adminbereich</button>
+                </Link>
+
+
             </div>
         </div>
     );
