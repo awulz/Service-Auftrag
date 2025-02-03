@@ -46,11 +46,14 @@ function Auftragsmanagement() {
                                 <td>{auftrag.id}</td>
                                 <td>{auftrag.kategorie}</td>
                                 <td>{auftrag.status}</td>
-                                <td>
+                                <td className="button-cell">
+                                    {/* Bearbeiten-Button mit korrekter Auftrags-ID */}
                                     <Link to={`/auftrag-bearbeiten/${auftrag.id}`}>
                                         <button className="btn bearbeiten">✏ Bearbeiten</button>
                                     </Link>
-                                    <Link to= "./rapporte">
+
+                                    {/* Rapport-Button mit korrekter ID */}
+                                    <Link to={`/rapporte/${auftrag.id}`}>
                                         <button className="btn rapport">📄 Rapport</button>
                                     </Link>
                                 </td>
