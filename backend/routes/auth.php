@@ -24,17 +24,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Passwort checken mit password_verify()
-    if (!password_verify($data['passwort'],  hash: $user['passwort'])) {
+    // Passwortüberprüfung
+    if (!password_verify($data['passwort'], $user['passwort'])) {
         echo json_encode(["error" => "Falsches Passwort"]);
         exit;
     }
 
-    echo json_encode(["message" => "Login erfolgreich", "user" => [
-        "id" => $user['id'],
-        "arbeiter_id" => $user['arbeiter_id'],
-        "rolle" => $user['rolle']
-    ]]);
+    // JWT Token generieren (falls du das später brauchst)
+    echo json_encode([
+        "message" => "Login erfolgreich",
+        "user" => [
+            "id" => $user['id'],
+            "arbeiter_id" => $user['arbeiter_id'],
+            "rolle" => $user['rolle']
+        ]
+    ]);
     exit;
 }
 ?>
