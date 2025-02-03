@@ -23,3 +23,25 @@ export const createAuftrag = async (auftrag) => {
     });
     return response.json();
 };
+
+export const getRapporte = async (auftragId) => {
+    const response = await axios.get(`${API_URL}/api/rapport/${auftragId}`);
+    return response.data;
+};
+
+export const createRapport = async (rapport) => {
+    const response = await axios.post(`${API_URL}/api/rapport`, rapport);
+    return response.data;
+
+};
+
+export const deleteRapport = async (rapportId) => {
+    const response = await axios.delete(`${API_URL}/api/rapport/${rapportId}`);
+    return response.data;
+
+};
+
+export const markRapportAsVerrechnet = async (rapportId) => {
+    const response = await axios.patch(`${API_URL}/api/rapport/verrechnet/${rapportId}`);
+    return response.data;
+};

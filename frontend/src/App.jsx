@@ -1,28 +1,25 @@
-import { useState } from "react";
-import Login from "./pages/Login";
-import AuftragForm from "./components/AuftragForm";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuftragsListe from "./components/AuftragsListe";
+import AuftragForm from "./components/AuftragForm";
+import Rapporte from "./components/Rapporte";
+import Auftragsmanagement from "./components/Auftragsmanagement";
+import AuftragsBearbeitung from "./components/AuftragsBearbeitung";
 import "./App.css";
 
 function App() {
-    const [token, setToken] = useState(null); // Keine JWT mehr, nur User-Daten
-
-    const handleLogin = (user) => {
-        setToken(user);
-    };
-
     return (
-        <div>
-            {token ? (
-                <>
-                    <h1>🛠️ Auftrag-Service</h1>
-                    <AuftragsListe />
-                    <AuftragForm />
-                </>
-            ) : (
-                <Login onLogin={handleLogin} />
-            )}
-        </div>
+        <Router>
+            <div>
+                <Routes>
+                    <Route path="/" element={<AuftragsListe />} />
+                    <Route path="/rapporte/:id" element={<Rapporte />} />
+                    <Route path="/rapporte" element={<Rapporte />} />
+                    <Route path="/auftrag-erfassen" element={<AuftragForm />} />
+                    <Route path="/auftragsmanagement" element={<Auftragsmanagement />} />
+                    <Route path="/auftrag-bearbeiten/:id" element={<AuftragsBearbeitung />} />
+                </Routes>
+            </div>
+        </Router>
     );
 }
 

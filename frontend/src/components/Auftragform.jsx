@@ -16,7 +16,7 @@ function AuftragForm({ onAuftragErstellen }) {
         const response = await createAuftrag(auftrag);
         alert(response.message);
         onAuftragErstellen(auftrag);  
-        setAuftrag({ kategorie: "", status: "", deadline: "" });
+        setAuftrag({ kategorie: "", status: "", deadline: "", Mitarbeiter: "" });
     };
 
     return (
@@ -42,6 +42,8 @@ function AuftragForm({ onAuftragErstellen }) {
                 required
             />
             <button type="submit">Auftrag speichern</button>
+
+       
         </form>
     );
 }
