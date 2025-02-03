@@ -1,0 +1,51 @@
+.auftrags-container {
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.auftragstabelle {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.auftragstabelle th, .auftragstabelle td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.auftragstabelle th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn.rapport {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn.erfassen {
+    background-color: #f39c12;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
