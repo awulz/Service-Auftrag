@@ -1,45 +1,93 @@
+/* Container für das Bearbeiten-Formular */
 .bearbeiten-container {
     max-width: 500px;
     margin: auto;
     padding: 20px;
     text-align: center;
+    background-color: #f9f9f9; /* Helles Grau für besseren Kontrast */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Formular-Layout */
 form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
+}
+
+/* Eingabefelder */
+input, select {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+/* Eingabefeld-Fokus */
+input:focus, select:focus {
+    border-color: #555; /* Dunkelgrau für Fokus */
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Button-Container */
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
     gap: 10px;
 }
 
-input, select {
-    padding: 10px;
-    font-size: 16px;
-}
-
-.buttons {
-    margin-top: 20px;
-}
-
+/* Allgemeine Button-Styling */
 button {
-    padding: 10px;
+    padding: 12px 18px;
     font-size: 16px;
     margin: 5px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 6px;
+    transition: 0.3s;
+    font-weight: bold;
 }
 
+/* Löschen-Button (Rot) */
 .delete {
-    background-color: #e74c3c;
+    background-color: #b02a2a; /* Dunkleres Rot für seriöses Design */
     color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.delete:hover {
+    background-color: #8a1f1f;
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Speichern-Button (Dunkelgrau statt Grün) */
 .save {
-    background-color: #2ecc71;
+    background-color: #444; /* Dunkelgrau */
     color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.save:hover {
+    background-color: #222;
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Zurück-Button (Neutrales Grau-Blau) */
 .back {
-    background-color: #3498db;
+    background-color: #777; /* Mittleres Grau */
     color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.back:hover {
+    background-color: #555;
+    opacity: 0.9;
+    transform: scale(1.05);
 }

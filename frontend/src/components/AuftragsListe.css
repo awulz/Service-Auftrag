@@ -1,51 +1,96 @@
+/* Container-Styling */
 .auftrags-container {
     max-width: 80%;
     margin: auto;
     padding: 20px;
     text-align: center;
+    background-color: #f9f9f9; /* Helles Grau */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Tabelle-Styling */
 .auftragstabelle {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.auftragstabelle th, .auftragstabelle td {
-    border: 1px solid #ddd;
+/* Tabellen-Kopf */
+.auftragstabelle th {
+    background-color: #333; /* Dunkelgrau */
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+}
+
+/* Tabellen-Zellen */
+.auftragstabelle td {
+    border: 1px solid #ccc;
     padding: 12px;
     text-align: center;
+    font-size: 15px;
 }
 
-.auftragstabelle th {
-    background-color: #4CAF50;
-    color: white;
+/* Abwechselnde Zeilenfarben */
+.auftragstabelle tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-.button-container {
-    margin-top: 20px;
+.auftragstabelle tr:nth-child(odd) {
+    background-color: #ffffff;
 }
 
-.btn {
-    padding: 10px 15px;
-    margin: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
+/* Hover-Effekt für Zeilen */
+.auftragstabelle tr:hover {
+    background-color: #d5d5d5;
     transition: 0.3s;
 }
 
+/* Button-Container */
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 18px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+/* Button für Rapporte */
 .btn.rapport {
-    background-color: #3498db;
+    background-color: #444; /* Dunkelgrau */
     color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.btn.rapport:hover {
+    background-color: #222;
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Button für Auftrag erfassen */
 .btn.erfassen {
-    background-color: #f39c12;
+    background-color: #777; /* Mittleres Grau */
     color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.btn:hover {
-    opacity: 0.8;
+.btn.erfassen:hover {
+    background-color: #555;
+    opacity: 0.9;
+    transform: scale(1.05);
 }
