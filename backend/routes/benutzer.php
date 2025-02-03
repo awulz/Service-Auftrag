@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method === 'GET') {
-    $stmt = $pdo->query("SELECT id, arbeiter_id, vorname, nachname, rolle_id FROM benutzer");
+    $stmt = $pdo->query("SELECT id, arbeiter_id, vorname, nachname, rolle FROM benutzer");
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
     exit;
 }
