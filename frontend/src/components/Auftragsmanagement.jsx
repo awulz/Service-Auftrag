@@ -29,7 +29,7 @@ function Auftragsmanagement() {
             {/* Seitenleiste für Navigation */}
             <div className="sidebar">
                 <Link to="/"><button>📋 Auftragsliste</button></Link>
-                <Link to="/rapporte"><button>📄 Rapporte</button></Link>
+                <Link to="/rapport"><button>📄 Rapporte</button></Link>
                 <Link to="/auftragsmanagement"><button className="active">📊 Auftragsmanagement</button></Link>
                 <Link to="/admin"><button>🔧 Admin</button></Link>
             </div>
