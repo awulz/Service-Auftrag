@@ -3,7 +3,8 @@ require_once __DIR__ . "/../config/db.php";
 header('Content-Type: application/json');
 
 $method = $_SERVER['REQUEST_METHOD'];
-$request = trim($_SERVER['REQUEST_URI'], "/");
+$request = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), "/");
+
 
 // 🔹 Alle Aufträge abrufen
 if ($request === 'api/auftraege' && $method === 'GET') {

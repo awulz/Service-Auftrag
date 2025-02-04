@@ -1,5 +1,6 @@
 /* Tabellen-Styling */
 .auftragstabelle {
+    color: #222;
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -35,6 +36,19 @@
     font-weight: bold;
 }
 
+/* Rapport hinzufügen-Button */
+.btn.add-rapport {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn.add-rapport:hover {
+    background-color: #218838;
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+
 /* Bearbeiten-Button */
 .btn.bearbeiten {
     background-color: #444;
@@ -49,12 +63,12 @@
 
 /* Rapport-Button */
 .btn.rapport {
-    background-color: #777;
+    background-color: #444;
     color: white;
 }
 
 .btn.rapport:hover {
-    background-color: #555;
+    background-color: #222;
     opacity: 0.9;
     transform: scale(1.05);
 }

@@ -1,15 +1,26 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getBenutzer, deleteBenutzer } from "../services/api"; // API importieren
 import "./AdminBereich.css";
 
 function AdminBereich() {
-    const [users, setUsers] = useState([
-        { id: 1, name: "Max", rolle: "Admin" },
-        { id: 2, name: "Lisa", rolle: "Manager" },
-        { id: 3, name: "Tom", rolle: "Arbeitssklave" }
-    ]);
+    const [users, setUsers] = useState([]);
 
-    const handleDelete = (id) => {
+    // 🔹 Benutzer aus der API laden
+    useEffect(() => {
+        async function fetchUsers() {
+            try {
+                const data = await getBenutzer();
+                setUsers(data);
+            } catch (error) {
+                console.error("Fehler beim Laden der Benutzer:", error);
+            }
+        }
+        fetchUsers();
+    }, []);
+
+    const handleDelete = async (id) => {
+        await deleteBenutzer(id);
         setUsers(users.filter(user => user.id !== id));
     };
 
@@ -35,7 +46,8 @@ function AdminBereich() {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>Vorname</th>
+                            <th>Nachname</th>
                             <th>Rolle</th>
                             <th>Aktion</th>
                         </tr>
@@ -45,7 +57,8 @@ function AdminBereich() {
                             users.map((user) => (
                                 <tr key={user.id}>
                                     <td>{user.id}</td>
-                                    <td>{user.name}</td>
+                                    <td>{user.vorname}</td>
+                                    <td>{user.nachname}</td>
                                     <td>{user.rolle}</td>
                                     <td className="button-cell">
                                         <Link to={`/admin/benutzerbearbeiten/${user.id}`}>
@@ -56,7 +69,7 @@ function AdminBereich() {
                                 </tr>
                             ))
                         ) : (
-                            <tr><td colSpan="4">Keine Benutzer gefunden</td></tr>
+                            <tr><td colSpan="5">Keine Benutzer gefunden</td></tr>
                         )}
                     </tbody>
                 </table>
