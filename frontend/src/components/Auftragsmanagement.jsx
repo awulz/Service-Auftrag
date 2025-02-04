@@ -31,7 +31,7 @@ function Auftragsmanagement() {
                 <Link to="/"><button>📋 Auftragsliste</button></Link>
                 <Link to="/rapport"><button>📄 Rapporte</button></Link>
                 <Link to="/auftragsmanagement"><button className="active">📊 Auftragsmanagement</button></Link>
-                <Link to="/admin"><button>🔧 Admin</button></Link>
+                <Link to="/adminbereich"><button>🔧 Admin</button></Link>
             </div>
 
             {/* Hauptbereich */}
