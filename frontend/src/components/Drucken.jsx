@@ -1,52 +1,35 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Drucken.css'; // Optional: Behalten Sie die CSS-Datei bei, falls Sie Styles verwenden
+import './Drucken.css';
 
 const Drucken = () => {
     const navigate = useNavigate();
 
     return (
         <div className="drucken-container">
-            {/ Header /}
             <div className="header">
-                <h1>Drucken</h1>
-
+                <h1>🖨️ Drucken</h1> {/* Unicode-Symbol statt React-Icon */}
             </div>
-
-            {/ Druckformular /}
             <div className="druck-form">
-                <label>
-                    Format Auswahl:
-                    <select>
-                        <option>A4</option>
-                        <option>A3</option>
-                    </select>
-                </label>
+                <label>Format Auswahl</label>
+                <select>
+                    <option>A4</option>
+                    <option>A3</option>
+                </select>
 
-                <label>
-                    Anzahl Seiten:
-                    <input type="number" min="1" />
-                </label>
+                <label>Anzahl Seiten</label>
+                <input type="number" min="1" />
 
-                <label>
-                    Farbauswahl:
-                    <select>
-                        <option>Schwarz/Weiß</option>
-                        <option>Farbe</option>
-                    </select>
-                </label>
+                <label>Farbauswahl</label>
+                <select>
+                    <option>Schwarz/Weiß</option>
+                    <option>Farbe</option>
+                </select>
             </div>
-
-            {/ Vorschau /}
-            <div className="preview">
-                <h2>Vorschau des gedruckten Auftrags</h2>
-                <p>(Kein Auftrag verfügbar. Füllen Sie das Formular aus.)</p>
-            </div>
-
-            {/ Buttons /}
+            <div className="preview">Vorschau des gedruckten Auftrags</div>
             <div className="buttons">
-                <button onClick={() => navigate(-1)}>Zurück</button>
-                <button>Drucken</button>
+                <button onClick={() => navigate(-1)}>⬅ Zurück</button>
+                <button>🖨️ Drucken</button>
             </div>
         </div>
     );

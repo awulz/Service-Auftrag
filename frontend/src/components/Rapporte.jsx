@@ -82,8 +82,12 @@ function Rapporte() {
                     </tbody>
                 </table>
             )}
+
+            
         </div>
+        
     );
+
 }
 
 export default Rapporte;

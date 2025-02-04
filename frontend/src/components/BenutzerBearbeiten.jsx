@@ -1,5 +1,6 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { getBenutzerById, updateBenutzer } from "../services/api";  // ✅ API-Funktionen importieren
 import "./AdminBereich.css";
 
 function BenutzerBearbeiten() {
@@ -7,24 +8,39 @@ function BenutzerBearbeiten() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         id: id,
-        name: "Dummy Name",
-        nachname: "Dummy Nachname",
-        passwort: "geheim",
-        rolle: "Admin"
+        name: "",
+        nachname: "",
+        passwort: "",
+        rolle: ""
     });
 
+    // 🔹 Benutzerdaten abrufen
     useEffect(() => {
-        console.log("Lade Benutzerdaten für ID:", id);
+        async function fetchBenutzer() {
+            try {
+                const data = await getBenutzerById(id);
+                setFormData(data);  // ✅ Benutzerdaten setzen
+            } catch (error) {
+                console.error("Fehler beim Laden des Benutzers:", error);
+            }
+        }
+        fetchBenutzer();
     }, [id]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    // 🔹 Benutzer speichern
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Benutzer aktualisiert:", formData); // ✅ Mock-Daten
-        navigate("/adminbereich");
+        try {
+            await updateBenutzer(id, formData);  // ✅ Änderungen speichern
+            alert("Benutzer gespeichert!");
+            navigate("/adminbereich");
+        } catch (error) {
+            console.error("Fehler beim Speichern:", error);
+        }
     };
 
     return (
@@ -35,8 +51,8 @@ function BenutzerBearbeiten() {
                 <input type="text" name="nachname" value={formData.nachname} onChange={handleChange} required />
                 <select name="rolle" value={formData.rolle} onChange={handleChange} required>
                     <option value="Admin">Admin</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Arbeitssklave">Arbeitssklave</option>
+                    <option value="Breichsleiter">Bereichsleiter</option>
+                    <option value="Mitarbeiter">Mitarbeiter</option>
                 </select>
                 <div className="button-container">
                     <Link to="/adminbereich"><button className="btn back">⬅ Zurück</button></Link>

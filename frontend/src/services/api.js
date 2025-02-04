@@ -17,6 +17,12 @@ export const getBenutzer = async () => {
     return response.json();
 };
 
+export const getBenutzerById = async (benutzerId) => {
+    const response = await axios.get(`${API_URL}/api/benutzer?id=${benutzerId}`);
+    return response.data;
+};
+
+
 
 export const getAuftraege = async () => {
     const response = await fetch(`${API_URL}/api/auftraege`);
@@ -38,6 +44,12 @@ export const deleteBenutzer = async (benutzerId) => {
     });
     return response.json();
 };
+
+export const updateBenutzer = async (benutzerId, benutzer) => {
+    const response = await axios.patch(`${API_URL}/api/benutzer?id=${benutzerId}`, benutzer);
+    return response.data;
+};
+
 
 
 export const getRapporte = async (auftragId) => {
@@ -65,6 +77,20 @@ export const getAllRapporte = async () => {
 
 export const markRapportAsVerrechnet = async (rapportId) => {
     const response = await axios.patch(`${API_URL}/api/rapport/verrechnet/${rapportId}`);
+    return response.data;
+};
+export const getAuftragById = async (auftragId) => {
+    const response = await axios.get(`${API_URL}/api/auftrag/${auftragId}`);
+    return response.data;
+};
+
+export const updateAuftrag = async (auftragId, auftrag) => {
+    const response = await axios.put(`${API_URL}/api/auftrag/${auftragId}`, auftrag);
+    return response.data;
+};
+
+export const deleteAuftrag = async (auftragId) => {
+    const response = await axios.delete(`${API_URL}/api/auftrag/${auftragId}`);
     return response.data;
 };
 

@@ -10,7 +10,7 @@ import BenutzerBearbeiten from "./components/Benutzerbearbeiten";
 import Login from "./pages/Login";
 import RapportHinzufuegen from "./components/RapportHinzufuegen";
 import GesamtRapporte from "./components/GesamtRapporte";
-
+import Drucken from "./components/Drucken";
 
 import "./App.css";
 
@@ -32,6 +32,7 @@ function App() {
                     <Route path="/admin/benutzerhinzufuegen" element={<BenutzerHinzufuegen />} />
                     <Route path="/admin/benutzerbearbeiten/:id" element={<BenutzerBearbeiten />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/drucken" element={<Drucken />} />
                 </Routes>
             </div>
         </Router>

@@ -47,6 +47,12 @@ function AuftragForm({ onAuftragErstellen }) {
                 onChange={(e) => setAuftrag({ ...auftrag, deadline: e.target.value })}
                 required
             />
+            <button
+                className="print-button"
+                onClick={() => navigate("/drucken")} // Navigiere zur Drucken-Seite
+            >
+                🖨️ Drucken
+            </button>
 
             {/* 🔹 Zurück-Button */}
             <button type="button" onClick={() => navigate("/")}>⬅ Zurück</button>
