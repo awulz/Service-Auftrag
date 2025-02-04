@@ -28,8 +28,8 @@ switch ($request) {
     case 'api/auftrag_mitarbeiter':
         require_once __DIR__ . "/routes/auftrag_mitarbeiter.php";
         break;
-    case 'api/rapporte':
-        require_once __DIR__ . "/routes/rapporte.php";
+    case 'api/rapport':
+        require_once __DIR__ . "/routes/rapport.php";
         break;
     case 'api/dokumente':
         require_once __DIR__ . "/routes/dokumente.php";

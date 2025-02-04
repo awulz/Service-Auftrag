@@ -17,8 +17,8 @@ function App() {
             <div>
                 <Routes>
                     <Route path="/" element={<AuftragsListe />} />
-                    <Route path="/rapporte/:id" element={<Rapporte />} />
-                    <Route path="/auftrag-erfassen" element={<AuftragForm />} />
+                    <Route path="/rapporte" element={<Rapporte />} />  {/* ✅ Alle Rapporte */}
+                    <Route path="/rapporte/:id" element={<Rapporte />} />  {/* ✅ Einzelne Rapporte */}
                     <Route path="/auftragsmanagement" element={<Auftragsmanagement />} />
                     <Route path="/auftrag-bearbeiten/:id" element={<AuftragsBearbeitung />} />
                     

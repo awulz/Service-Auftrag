@@ -5,6 +5,24 @@ header('Content-Type: application/json');
 $method = $_SERVER['REQUEST_METHOD'];
 $request = trim($_SERVER['REQUEST_URI'], "/");
 
+// 🔹 Debugging (optional)
+error_log("REQUEST_URI: " . $_SERVER['REQUEST_URI']);
+error_log("PARSED REQUEST: " . $request);
+
+// 🔹 Alle Rapporte abrufen
+if ($request === 'api/rapport' && $method === 'GET') {
+    $stmt = $pdo->query("SELECT * FROM rapport");
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (!$result) {
+        echo json_encode([]);  // 🔹 Falls keine Einträge vorhanden sind, gib eine leere Liste zurück
+        exit;
+    }
+
+    echo json_encode($result);
+    exit;
+}
+
 // 🔹 Rapport erstellen
 if ($request === 'api/rapport' && $method === 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
