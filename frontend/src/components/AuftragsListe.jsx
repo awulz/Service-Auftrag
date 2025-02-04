@@ -44,7 +44,7 @@ function AuftragsListe() {
 
             {/* Button-Container für die Navigation */}
             <div className="button-container">
-                <Link to="/rapporte">
+                <Link to="/rapport">
                     <button className="btn rapport">📄 Zu Rapporte</button>
                 </Link>
                 <Link to="/auftrag-erfassen">

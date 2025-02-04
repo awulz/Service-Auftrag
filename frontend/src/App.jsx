@@ -25,6 +25,7 @@ function App() {
                     <Route path="/rapport-hinzufuegen/:auftragId" element={<RapportHinzufuegen />} />
                     <Route path="/auftragsmanagement" element={<Auftragsmanagement />} />
                     <Route path="/auftrag-bearbeiten/:id" element={<AuftragsBearbeitung />} />
+                    <Route path="/auftrag-erfassen" element={<AuftragForm />} />
                     
                     {/* ✅ Korrekte Schreibweise */}
                     <Route path="/adminbereich" element={<AdminBereich />} />

@@ -39,6 +39,9 @@ switch ($request) {
     case 'api/rapporte':  // ➕ Neu hinzugefügt, um alle Rapporte zu unterstützen
         require_once __DIR__ . "/routes/rapport.php";
         break;
+    case 'api/auftrag-erfassen':
+        require_once __DIR__ . "/routes/auftrag.php"; 
+        break;
             
         
     default:

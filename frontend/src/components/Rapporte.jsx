@@ -67,11 +67,14 @@ function Rapporte() {
                                 <td>
                                     <a href={`/dokumente/${r.dokument}`} download>Download</a>
                                 </td>
-                                <td>{r.verrechnet ? "✅" : "❌"}</td>
                                 <td>
-                                    {!r.verrechnet && (
-                                        <button onClick={() => handleMarkAsVerrechnet(r.id)}>✔ Verrechnen</button>
-                                    )}
+                                    <input
+                                        type="checkbox"
+                                        checked={r.verrechnet === 1}
+                                        onChange={() => handleMarkAsVerrechnet(r.id)}
+                                    />
+                                </td>
+                                <td>
                                     <button onClick={() => handleDeleteRapport(r.id)}>🗑 Löschen</button>
                                 </td>
                             </tr>
