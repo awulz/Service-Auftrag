@@ -1,33 +1,48 @@
-import { useParams, Link } from "react-router-dom";
-import "./Rapporte.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getRapporte } from "../services/api";
 
 function Rapporte() {
     const { id } = useParams();
+    const [rapporte, setRapporte] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getRapporte(id);
+            setRapporte(data);
+        }
+        fetchData();
+    }, [id]);
 
     return (
-        <div className="rapporte-container">
-            <h1>📄 Rapporte für Auftrag {id || "alle"}</h1>
-
-            <table className="rapporte-tabelle">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Datum</th>
-                        <th>Auftrag ID</th>
-                        <th>Status</th>
-                        <th>Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* API-Daten hier einfügen */}
-                </tbody>
-            </table>
-
-            <div className="button-container">
-                <Link to="/">
-                    <button className="btn zurück">⬅ Zurück zur Auftragsliste</button>
-                </Link>
-            </div>
+        <div>
+            <h1>Rapporte für Auftrag {id}</h1>
+            {rapporte.length === 0 ? (
+                <p>Keine Rapporte vorhanden</p>
+            ) : (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Arbeiter ID</th>
+                            <th>Datum</th>
+                            <th>Dokument</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rapporte.map((rapport) => (
+                            <tr key={rapport.id}>
+                                <td>{rapport.id}</td>
+                                <td>{rapport.arbeiter_id}</td>
+                                <td>{rapport.datum}</td>
+                                <td>
+                                    <a href={`/dokumente/${rapport.dokument}`} download>Download</a>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
         </div>
     );
 }

@@ -36,6 +36,19 @@
     font-weight: bold;
 }
 
+/* Rapport hinzufügen-Button */
+.btn.add-rapport {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn.add-rapport:hover {
+    background-color: #218838;
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+
 /* Bearbeiten-Button */
 .btn.bearbeiten {
     background-color: #444;

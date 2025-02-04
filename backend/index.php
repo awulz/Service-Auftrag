@@ -37,6 +37,9 @@ switch ($request) {
     case 'api/auftrag':
         require_once __DIR__ . "/routes/auftraege.php";
         break;
+    case (preg_match("#^api/rapport(/.*)?$#", $request) ? true : false):
+        require_once __DIR__ . "/routes/rapport.php";
+        break;
         
     default:
         http_response_code(404);

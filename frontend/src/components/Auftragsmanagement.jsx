@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getAuftraege } from "../services/api";
 import "./Auftragsmanagement.css";
 
 function Auftragsmanagement() {
     const [auftraege, setAuftraege] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -17,6 +18,11 @@ function Auftragsmanagement() {
         }
         fetchData();
     }, []);
+
+    // 🔹 Funktion zum Hinzufügen eines neuen Rapports
+    const handleAddRapport = (auftragId) => {
+        navigate(`/rapport-hinzufuegen/${auftragId}`);
+    };
 
     return (
         <div className="container">
@@ -47,15 +53,18 @@ function Auftragsmanagement() {
                                 <td>{auftrag.kategorie}</td>
                                 <td>{auftrag.status}</td>
                                 <td className="button-cell">
-                                    {/* Bearbeiten-Button mit korrekter Auftrags-ID */}
+                                    {/* Bearbeiten-Button */}
                                     <Link to={`/auftrag-bearbeiten/${auftrag.id}`}>
                                         <button className="btn bearbeiten">✏ Bearbeiten</button>
                                     </Link>
 
-                                    {/* Rapport-Button mit korrekter ID */}
+                                    {/* Rapporte anzeigen */}
                                     <Link to={`/rapporte/${auftrag.id}`}>
-                                        <button className="btn rapport">📄 Rapport</button>
+                                        <button className="btn rapport">📄 Rapporte</button>
                                     </Link>
+
+                                    {/* Rapport hinzufügen */}
+                                    <button className="btn add-rapport" onClick={() => handleAddRapport(auftrag.id)}>➕ Rapport hinzufügen</button>
                                 </td>
                             </tr>
                         ))}

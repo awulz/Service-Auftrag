@@ -1,3 +1,5 @@
+import axios from "axios";  // 
+
 const API_URL = "http://localhost:8000";
 
 export const loginUser = async (arbeiterId, passwort) => {
@@ -57,5 +59,10 @@ export const deleteRapport = async (rapportId) => {
 
 export const markRapportAsVerrechnet = async (rapportId) => {
     const response = await axios.patch(`${API_URL}/api/rapport/verrechnet/${rapportId}`);
+    return response.data;
+};
+
+export const getAllRapporte = async () => {
+    const response = await axios.get(`${API_URL}/api/rapport`);
     return response.data;
 };

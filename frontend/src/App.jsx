@@ -8,6 +8,8 @@ import AdminBereich from "./components/AdminBereich";
 import BenutzerHinzufuegen from "./components/Benutzerhinzufuegen";
 import BenutzerBearbeiten from "./components/Benutzerbearbeiten"; 
 import Login from "./pages/Login";
+import RapportHinzufuegen from "./components/RapportHinzufuegen";
+
 
 import "./App.css";
 
@@ -19,6 +21,7 @@ function App() {
                     <Route path="/" element={<AuftragsListe />} />
                     <Route path="/rapporte" element={<Rapporte />} />  {/* ✅ Alle Rapporte */}
                     <Route path="/rapporte/:id" element={<Rapporte />} />  {/* ✅ Einzelne Rapporte */}
+                    <Route path="/rapport-hinzufuegen/:auftragId" element={<RapportHinzufuegen />} />
                     <Route path="/auftragsmanagement" element={<Auftragsmanagement />} />
                     <Route path="/auftrag-bearbeiten/:id" element={<AuftragsBearbeitung />} />
                     

@@ -9,19 +9,32 @@ $request = trim($_SERVER['REQUEST_URI'], "/");
 error_log("REQUEST_URI: " . $_SERVER['REQUEST_URI']);
 error_log("PARSED REQUEST: " . $request);
 
-// 🔹 Alle Rapporte abrufen
 if ($request === 'api/rapport' && $method === 'GET') {
+    error_log("Alle Rapporte abrufen...");
     $stmt = $pdo->query("SELECT * FROM rapport");
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if (!$result) {
-        echo json_encode([]);  // 🔹 Falls keine Einträge vorhanden sind, gib eine leere Liste zurück
+        echo json_encode([]);  
         exit;
     }
 
     echo json_encode($result);
     exit;
 }
+
+// 🔹 Falsche Route hier:
+if (preg_match('#^api/rapport/(\d+)$#', $request, $matches) && $method === 'GET') {
+    $auftrag_id = $matches[1];
+    error_log("Rapporte für Auftrag: " . $auftrag_id);
+    $stmt = $pdo->prepare("SELECT * FROM rapport WHERE auftrag_id = ?");
+    $stmt->execute([$auftrag_id]);
+    $rapporte = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo json_encode($rapporte);
+    exit;
+}
+
 
 // 🔹 Rapport erstellen
 if ($request === 'api/rapport' && $method === 'POST') {
@@ -52,6 +65,16 @@ if (preg_match('#^api/rapport/(\d+)$#', $request, $matches) && $method === 'DELE
     $stmt = $pdo->prepare("DELETE FROM rapport WHERE id = ?");
     $stmt->execute([$rapport_id]);
     echo json_encode(["message" => "Rapport gelöscht"]);
+    exit;
+}
+
+if (preg_match('#^api/rapport/(\d+)$#', $request, $matches) && $method === 'GET') {
+    $auftrag_id = $matches[1];
+    $stmt = $pdo->prepare("SELECT * FROM rapport WHERE auftrag_id = ?");
+    $stmt->execute([$auftrag_id]);
+    $rapporte = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo json_encode($rapporte);
     exit;
 }
 
