@@ -24,3 +24,7 @@ Linux/Unix: `brew services start mysql`
 
 ## Projectspeicherung zur ausführung
 Da wir php benutzen müsst ihr das projekt in htdocs speichern!
+
+
+## Gesamte GUI Plannung 
+https://miro.com/welcomeonboard/OXdsQmZxSnVEbDJ3bVlkM0R2WFp3OHpuUUNlcGpTTkg3TFNWNzl2WDJKMkpxVHpFVFliWElzcy80dXY2STBTVDZ0WGl3YjJtV2JaTW1qWWRLNWlCVTY2L3hzTlJGYm5YYTRpdDM2em9JdkhnSWFvdndiYUR4Q05TZEtLMko5R3Z0R2lncW1vRmFBVnlLcVJzTmdFdlNRPT0hdjE=?share_link_id=813407695828
