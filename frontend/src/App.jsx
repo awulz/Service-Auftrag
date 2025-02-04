@@ -7,6 +7,7 @@ import AuftragsBearbeitung from "./components/AuftragsBearbeitung";
 import AdminBereich from "./components/AdminBereich";  
 import BenutzerHinzufuegen from "./components/Benutzerhinzufuegen";
 import BenutzerBearbeiten from "./components/Benutzerbearbeiten"; 
+import Login from "./pages/Login";
 
 import "./App.css";
 
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/adminbereich" element={<AdminBereich />} />
                     <Route path="/admin/benutzerhinzufuegen" element={<BenutzerHinzufuegen />} />
                     <Route path="/admin/benutzerbearbeiten/:id" element={<BenutzerBearbeiten />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </div>
         </Router>

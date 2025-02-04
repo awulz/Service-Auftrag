@@ -10,6 +10,12 @@ export const loginUser = async (arbeiterId, passwort) => {
     return response.json();
 };
 
+export const getBenutzer = async () => {
+    const response = await fetch(`${API_URL}/api/benutzer`);
+    return response.json();
+};
+
+
 export const getAuftraege = async () => {
     const response = await fetch(`${API_URL}/api/auftraege`);
     return response.json();
@@ -23,6 +29,14 @@ export const createAuftrag = async (auftrag) => {
     });
     return response.json();
 };
+
+export const deleteBenutzer = async (benutzerId) => {
+    const response = await fetch(`${API_URL}/api/benutzer/${benutzerId}`, {
+        method: "DELETE",
+    });
+    return response.json();
+};
+
 
 export const getRapporte = async (auftragId) => {
     const response = await axios.get(`${API_URL}/api/rapport/${auftragId}`);
